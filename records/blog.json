@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Hello World",
+      "content": "This is my first post",
+      "author": "Ian Vanagas"
+    },
+    {
+      "id": 2,
+      "title": "PostHog is awesome",
+      "content": "PostHog is so cool",
+      "author": "Ian Vanagas"
+    }
+  ]
+}
