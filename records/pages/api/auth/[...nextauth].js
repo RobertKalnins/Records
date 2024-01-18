@@ -14,5 +14,16 @@ providers: [
 		clientSecret: process.env.TWITCH_CLIENT_SECRET
 		})
 	],
-	secret: process.env.NEXTAUTH_SECRET
+	secret: process.env.NEXTAUTH_SECRET,
+	callbacks: {
+		async jwt({ token, user, account }) {
+			console.log('JWT token:', token);
+		        return token;
+		        },
+	    	async session({ session, token }) {
+			// Assign the Twitch ID to the session object
+			session.user.id = token.sub;
+			      return session;
+			}
+	}
 })

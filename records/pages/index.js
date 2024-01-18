@@ -2,9 +2,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useSession, signIn, signOut } from "next-auth/react";
+import React from 'react';
 
 export default function Home({ posts }) {
   const { data: session } = useSession();
+
   return (
     <>
       <Head>
@@ -18,8 +20,16 @@ export default function Home({ posts }) {
 	  <button onClick={() => signIn()}>Sign in</button>
 	  ) : (
 	    <div>
-	    <p>Welcome {session.user.name}</p>
-	    <button onClick={() => signOut()}>Sign out</button>
+	      <div style={{ display: 'flex', alignItems: 'center' }}>
+	        <img src={session.user.image} alt={session.user.name} style={{ width: '25px', height: '25px', marginRight: '10px' }} />
+	        <p>Welcome {session.user.name}</p>
+	      </div>
+	      <div>
+		<p>Twitch ID: {session.user.id}</p>
+ 	      </div>
+	      <div style={{ marginTop: '1px' }}>
+	        <button onClick={() => signOut()}>Sign out</button>
+	      </div>
 	    </div>
 	)}
         <ul>
